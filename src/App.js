@@ -49,14 +49,14 @@ const App = () => {
   const [maxGetMoneyKr, setMaxGetMoneyKr] = useState('');
 
   const calcGetMoney = (_useMoney, _useQuarterlyMoney) => {
-    const calcGetMoney = (_useMoney - (_useQuarterlyMoney * 1.03).toFixed(0)) * 0.1;
+    const calcGetMoney = ((_useMoney - (_useQuarterlyMoney * 1.03)) * 0.1).toFixed(0);
     if(calcGetMoney > 0) {
       if(calcGetMoney > 100_000) {
         setuseGetMoney(100_000);
-        setuseGetMoneyKr(100_000);
+        setuseGetMoneyKr(num2han(100_000));
       } else {
         setuseGetMoney(calcGetMoney);
-        setuseGetMoneyKr(calcGetMoney);
+        setuseGetMoneyKr(num2han(calcGetMoney));
       }
     } else {
       setuseGetMoney(0);
